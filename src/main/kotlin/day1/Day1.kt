@@ -3,6 +3,7 @@ package day1
 import utils.*
 
 fun main() {
+    println(task1())
     print(task2())
 }
 
