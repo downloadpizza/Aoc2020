@@ -38,19 +38,5 @@ fun check2(line: String): Boolean {
     return PasswordPolicy(min, max, char).matches2(pw.trim())
 }
 
-fun task1(): Int {
-    return input.count {
-        check1(it)
-    }
-    throw NoSolutionFoundException()
-}
-fun task2(): Int {
-    val pp2 = PasswordPolicy(1, 3, 'a')
-
-    print(pp2.matches2("abcde"))
-
-    return input.count {
-        check2(it)
-    }
-    throw NoSolutionFoundException()
-}
+fun task1(): Int = input.count(::check1)
+fun task2(): Int = input.count(::check2)
