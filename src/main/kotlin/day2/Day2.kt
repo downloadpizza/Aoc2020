@@ -1,19 +1,18 @@
 package day2
 
-import utils.NoSolutionFoundException
 import utils.getResourceAsLines
 
 val input = getResourceAsLines("/day2/input.txt")
 
-data class PasswordPolicy(val min: Int, val max: Int, val char: Char) {
+data class PasswordPolicy(val lo: Int, val hi: Int, val char: Char) {
     fun matches(password: String): Boolean {
         val a = password.count { it -> it == char }
-        return a in min..max
+        return a in lo..hi
     }
 
     fun matches2(password: String): Boolean {
-        val minc = password.getOrNull(min - 1) ?: return false
-        val maxc = password.getOrNull(max - 1) ?: return false
+        val minc = password.getOrNull(lo - 1) ?: return false
+        val maxc = password.getOrNull(hi - 1) ?: return false
 
 
         return (minc == char) xor (maxc == char)
