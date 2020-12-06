@@ -1,6 +1,7 @@
 package day4
 
 import utils.getResourceAsString
+import utils.whitespace
 
 val input = getResourceAsString("/day4/input.txt")
 
@@ -25,8 +26,6 @@ data class Passport(
         val passportId: String,
         val countryId: String?
 )
-
-val whitespace = "[ \n]".toRegex()
 
 fun String.toUncheckedPassword(): UncheckedPassport? {
     val fields = whitespace.split(this).map { it.split(":")[0] to it.split(":")[1] }.toMap()

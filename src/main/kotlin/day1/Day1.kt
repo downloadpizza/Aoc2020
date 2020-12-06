@@ -4,7 +4,7 @@ import utils.*
 
 fun main() {
     println(task1())
-    print(task2())
+    println(task2())
 }
 
 val input = getResourceAsInts("/day1/input.txt")

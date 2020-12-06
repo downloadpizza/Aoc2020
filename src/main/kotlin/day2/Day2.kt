@@ -20,7 +20,7 @@ data class PasswordPolicy(val lo: Int, val hi: Int, val char: Char) {
 }
 
 fun main() {
-//    println(task1())
+    println(task1())
     println(task2())
 }
 
