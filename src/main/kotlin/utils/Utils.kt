@@ -2,11 +2,12 @@ package utils
 
 val anon: Class<*> = object {}.javaClass
 
+fun String.fixLineSeparators(): String = this.replace("\r\n", "\n")
+
 fun getResource(name: String) = anon.getResource(name)
 
+fun getResourceAsString(name: String) = getResource(name).readText().fixLineSeparators().trim()
 fun getResourceAsLines(name: String) = getResourceAsString(name).lines()
-fun getResourceAsString(name: String) = getResource(name).readText().trim()
-
 fun getResourceAsInts(name: String) = getResourceAsLines(name).map(String::toInt)
 
 

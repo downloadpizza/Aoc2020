@@ -1,6 +1,5 @@
 package day6
 
-import utils.whitespace
 import utils.*
 
 fun main() {
@@ -10,13 +9,17 @@ fun main() {
 
 val input = getResourceAsString("/day6/input.txt").split("\n\n")
 
-fun task1(): Int = input.map {
-    whitespace.replace(it, "").toList().distinct().size
-}.sum()
-
-fun task2(): Int = input.map {
-    it.split("\n")
-            .map(String::toList)
-            .reduce { acc, s -> acc.intersect(s).toList() }
+fun task1(): Int = input.sumOf {
+        it.split("\n")
+            .map(String::toSet)
+            .reduce { acc, s -> acc.union(s) }
+            .also(::println)
             .size
-}.sum()
+}
+
+fun task2(): Int = input.sumOf {
+    it.split("\n")
+            .map(String::toSet)
+            .reduce { acc, s -> acc.intersect(s) }
+            .size
+}
