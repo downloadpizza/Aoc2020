@@ -13,7 +13,6 @@ fun task1(): Int = input.sumOf {
         it.split("\n")
             .map(String::toSet)
             .reduce { acc, s -> acc.union(s) }
-            .also(::println)
             .size
 }
 
