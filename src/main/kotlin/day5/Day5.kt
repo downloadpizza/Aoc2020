@@ -2,7 +2,7 @@ package day5
 
 import utils.getResourceAsLines
 
-val input = getResourceAsLines("/day5/input.txt")
+val input = getResourceAsLines("/day5/input.txt").map(::id)
 
 fun main() {
     println(task1())
@@ -14,13 +14,11 @@ fun id(s: String): Int = s.replace("[BR]".toRegex(), "1")
         .toInt(2)
 
 fun task1(): Int = input
-        .map(::id)
         .maxOrNull()!!
 
 fun task2(): Int {
-    val ids = input.map(::id)
     return (0..(127*8+7))
-            .dropWhile { it !in ids }
-            .dropWhile { it in ids }
+            .dropWhile { it !in input }
+            .dropWhile { it in input }
             .first()
 }
