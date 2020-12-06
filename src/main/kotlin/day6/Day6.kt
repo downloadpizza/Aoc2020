@@ -12,13 +12,13 @@ val input = getResourceAsString("/day6/input.txt").split("\n\n")
 fun task1(): Int = input.sumOf {
         it.split("\n")
             .map(String::toSet)
-            .reduce { acc, s -> acc.union(s) }
+            .reduce { acc, s -> acc union s }
             .size
 }
 
 fun task2(): Int = input.sumOf {
     it.split("\n")
             .map(String::toSet)
-            .reduce { acc, s -> acc.intersect(s) }
+            .reduce { acc, s -> acc intersect s }
             .size
 }
