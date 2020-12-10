@@ -9,6 +9,7 @@ fun getResource(name: String) = anon.getResource(name)
 fun getResourceAsString(name: String) = getResource(name).readText().fixLineSeparators().trim()
 fun getResourceAsLines(name: String) = getResourceAsString(name).lines()
 fun getResourceAsInts(name: String) = getResourceAsLines(name).map(String::toInt)
+fun getResourceAsLongs(name: String) = getResourceAsLines(name).map(String::toLong)
 
 
 class NoSolutionFoundException : Exception {
