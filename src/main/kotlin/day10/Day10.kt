@@ -7,7 +7,6 @@ const val wall = 0L
 val own = input.maxOrNull()!! + 3L
 
 fun main() {
-    println(input)
     println(task1())
     println(task2())
 }
