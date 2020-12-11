@@ -2,9 +2,9 @@ package day11
 
 import utils.*
 
-typealias Fare = List<List<Spot>>
+typealias WaitingArea = List<List<Spot>>
 
-typealias MutableFare = MutableList<MutableList<Spot>>
+typealias MutableWaitingArea = MutableList<MutableList<Spot>>
 
 val input = getResourceAsLines("/day11/input.txt").map { line ->
     line.map {
@@ -19,7 +19,7 @@ val input = getResourceAsLines("/day11/input.txt").map { line ->
 val height = input.size
 val width = input[0].size
 
-fun Fare.getOrNull(x: Int, y: Int): Spot? = this.getOrNull(y)?.getOrNull(x)
+fun WaitingArea.getOrNull(x: Int, y: Int): Spot? = this.getOrNull(y)?.getOrNull(x)
 
 val directions = listOf(
         Pair(-1, -1),   Pair(0, -1),    Pair(1, -1),
@@ -27,11 +27,11 @@ val directions = listOf(
         Pair(-1, 1),    Pair(0, 1),     Pair(1, 1),
 )
 
-fun Fare.getAdjacent(x: Int, y: Int): List<Spot> = directions.mapNotNull { (xo, yo) ->
+fun WaitingArea.getAdjacent(x: Int, y: Int): List<Spot> = directions.mapNotNull { (xo, yo) ->
     this.getOrNull(x + xo, y + yo)
 }
 
-fun Fare.getVisible(x: Int, y: Int): List<Spot> = directions.mapNotNull { (xo, yo) ->
+fun WaitingArea.getVisible(x: Int, y: Int): List<Spot> = directions.mapNotNull { (xo, yo) ->
     var currentX = x + xo
     var currentY = y + yo
 
@@ -57,8 +57,8 @@ fun main() {
     println(task2())
 }
 
-fun iterate(input: Fare): Fare {
-    val result: MutableFare = MutableList(height) { MutableList(width) { Spot.Floor } }
+fun iterate(input: WaitingArea): WaitingArea {
+    val result: MutableWaitingArea = MutableList(height) { MutableList(width) { Spot.Floor } }
     for (y in 0 until height) {
         for (x in 0 until width) {
             val current = input[y][x]
@@ -76,8 +76,8 @@ fun iterate(input: Fare): Fare {
     return result
 }
 
-fun iterateVisible(input: Fare): Fare {
-    val result: MutableFare = MutableList(height) { MutableList(width) { Spot.Floor } }
+fun iterateVisible(input: WaitingArea): WaitingArea {
+    val result: MutableWaitingArea = MutableList(height) { MutableList(width) { Spot.Floor } }
     for (y in 0 until height) {
         for (x in 0 until width) {
             val current = input[y][x]
